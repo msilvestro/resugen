@@ -3,12 +3,23 @@
 body {
   margin: 0;
   font-family: "Rubik", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #262626;
+  border-bottom: 1px solid #262626;
+}
+
+a:hover {
+  color: white;
   background-color: #262626;
+  border-top: 1px solid #262626;
 }
 
 p {
   margin: 0;
-  margin-bottom: 1em;
+  margin-bottom: 0.7em;
 }
 
 p:last-child {
@@ -31,13 +42,14 @@ ul:last-child {
 }
 
 #resume {
-  max-width: 768px;
+  max-width: 960px;
   margin: 0 auto;
 }
 
 header > h1 {
   margin: 15px 30px;
-  color: white;
+  margin-bottom: 0;
+  color: #262626;
   text-transform: uppercase;
   font-size: 3em;
 }
@@ -50,6 +62,7 @@ header > h2 {
   background-color: white;
   color: #262626;
   padding: 30px;
+  padding-top: 15px;
 }
 
 header > h3 {
@@ -82,7 +95,7 @@ header > span {
   display: block;
 }
 
-header > span.company {
+header > span.subtitle {
   color: #696969;
 }
 

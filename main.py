@@ -5,6 +5,7 @@ import time
 from watchdog.observers import Observer
 from watchdog.events import PatternMatchingEventHandler
 import re
+import markdown
 
 template_loader = FileSystemLoader(searchpath="./template")
 template_env = Environment(loader=template_loader)
@@ -19,7 +20,12 @@ def format_date(input, format):
     return format.format(year=year, month=month)
 
 
+def markdown_converter(input):
+    return markdown.markdown(input)
+
+
 template_env.filters["format_date"] = format_date
+template_env.filters["markdown"] = markdown_converter
 
 
 def export():
@@ -41,14 +47,14 @@ class TemplateHandler(PatternMatchingEventHandler):
         print(event)
         try:
             export()
-        except (TemplateSyntaxError, TypeError) as exc:
+        except Exception as exc:
             print(exc)
 
 
 if __name__ == "__main__":
     try:
         export()
-    except (TemplateSyntaxError, TypeError) as exc:
+    except Exception as exc:
         print(exc)
     observer = Observer()
     observer.schedule(TemplateHandler(), path=".", recursive=True)
