@@ -1,20 +1,34 @@
 from jinja2 import Environment, FileSystemLoader
+from jinja2.exceptions import TemplateSyntaxError
 import yaml
 import time
 from watchdog.observers import Observer
 from watchdog.events import PatternMatchingEventHandler
+import re
+
+template_loader = FileSystemLoader(searchpath="./template")
+template_env = Environment(loader=template_loader)
+
+month_date_pattern = re.compile(r"^([0-9]{4})-([0-9]{2})$")
+
+
+def format_date(input, format):
+    if not input:
+        return "now"
+    year, month = month_date_pattern.findall(input)[0]
+    return format.format(year=year, month=month)
+
+
+template_env.filters["format_date"] = format_date
 
 
 def export():
     TEMPLATE_NAME = "ginseng"
-
-    template_loader = FileSystemLoader(searchpath="./template")
-    template_env = Environment(loader=template_loader)
     template = template_env.get_template(f"{TEMPLATE_NAME}.html")
 
-    with open("resume.yml", "r") as input_file:
+    with open("resume.yml", "r", encoding="utf-8") as input_file:
         resume = yaml.safe_load(input_file)
-    with open("output/resume.html", "w") as output_file:
+    with open("output/resume.html", "w", encoding="utf-8") as output_file:
         output_file.write(template.render(resume=resume))
 
 
@@ -25,10 +39,17 @@ class TemplateHandler(PatternMatchingEventHandler):
 
     def on_modified(self, event):
         print(event)
-        export()
+        try:
+            export()
+        except (TemplateSyntaxError, TypeError) as exc:
+            print(exc)
 
 
 if __name__ == "__main__":
+    try:
+        export()
+    except (TemplateSyntaxError, TypeError) as exc:
+        print(exc)
     observer = Observer()
     observer.schedule(TemplateHandler(), path=".", recursive=True)
     observer.start()
