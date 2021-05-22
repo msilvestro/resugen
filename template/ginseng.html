@@ -13,13 +13,21 @@
       </header>
       <div class="content">
         <section>
+          <p>I'm a developer with a mathematical background.</p>
+          <p>
+            🌐 <a href="{{ resume.website }}">{{ resume.website }}</a> — 📧
+            <a href="mailto:{{ resume.email }}">{{ resume.email }}</a>
+          </p>
+        </section>
+
+        <section>
           <header><h3>Experiences</h3></header>
           <section class="timeline">
             {% for work_experience in resume.work %}
             <section>
               <header>
                 <h4>{{ work_experience.position }}</h4>
-                <span class="company">{{ work_experience.company }}</span>
+                <span class="subtitle">{{ work_experience.company }}</span>
                 <span class="date"
                   >{{ work_experience.start_date | format_date("{month}/{year}")
                   }}—{{ work_experience.end_date | format_date("{month}/{year}")
@@ -43,6 +51,30 @@
                 </ul>
                 {% endif %}
               </section>
+            </section>
+            {% endfor %}
+          </section>
+        </section>
+
+        <section>
+          <header><h3>Education</h3></header>
+          <section class="timeline">
+            {% for education in resume.education %}
+            <section>
+              <header>
+                <h4>{{ education.major }}</h4>
+                <span class="subtitle"
+                  >{{ education.institution }} — {{ education.final_grade
+                  }}</span
+                >
+                <span class="date"
+                  >{{ education.start_date | format_date("{month}/{year}") }}—{{
+                  education.end_date | format_date("{month}/{year}") }}</span
+                >
+              </header>
+              {% if education.summary %}
+              <section>{{ education.summary | markdown }}</section>
+              {% endif %}
             </section>
             {% endfor %}
           </section>
