@@ -19,3 +19,7 @@ htmlcov/
 # Environment variables
 .env*
 !.env.example
+
+# Resume input and output
+resume.yml
+output/
