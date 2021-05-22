@@ -6,7 +6,48 @@
     </style>
   </head>
   <body>
-    <h1>{{ resume.name }}</h1>
-    <span>{{ resume.label }}</span>
+    <div id="resume">
+      <header>
+        <h1>{{ resume.name }}</h1>
+        <h2>Resume</h2>
+      </header>
+      <div class="content">
+        <section>
+          <header><h3>Experiences</h3></header>
+          <section class="timeline">
+            {% for work_experience in resume.work %}
+            <section>
+              <header>
+                <h4>{{ work_experience.position }}</h4>
+                <span class="company">{{ work_experience.company }}</span>
+                <span class="date"
+                  >{{ work_experience.start_date | format_date("{month}/{year}")
+                  }}—{{ work_experience.end_date | format_date("{month}/{year}")
+                  }}</span
+                >
+              </header>
+              <section>
+                {% if work_experience.summary %}
+                <p>{{ work_experience.summary }}</p>
+                {% endif %} {% if work_experience.highlights %}
+                <ul class="highlights">
+                  {% for highlight in work_experience.highlights %}
+                  <li>{{ highlight }}</li>
+                  {% endfor %}
+                </ul>
+                {% endif %} {% if work_experience.tags %}
+                <ul class="tags">
+                  {% for tag in work_experience.tags %}
+                  <li>{{ tag }}</li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+              </section>
+            </section>
+            {% endfor %}
+          </section>
+        </section>
+      </div>
+    </div>
   </body>
 </html>
