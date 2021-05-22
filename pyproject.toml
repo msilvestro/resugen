@@ -9,6 +9,7 @@ license = "MIT"
 python = "^3.9"
 Jinja2 = "^3.0.1"
 PyYAML = "^5.4.1"
+watchdog = "^2.1.2"
 
 [tool.poetry.dev-dependencies]
 
