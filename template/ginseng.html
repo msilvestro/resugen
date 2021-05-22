@@ -1,8 +1,12 @@
 <html>
   <head>
     <title>{{ resume.name }}'s resume</title>
+    <style type="text/css">
+      {% include "ginseng.css" %}
+    </style>
   </head>
   <body>
     <h1>{{ resume.name }}</h1>
+    <span>{{ resume.label }}</span>
   </body>
 </html>
