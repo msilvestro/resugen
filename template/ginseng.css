@@ -65,7 +65,7 @@ header > h2 {
   padding-top: 15px;
 }
 
-header > h3 {
+h3 {
   display: inline-block;
   background-color: #262626;
   color: white;
@@ -86,7 +86,7 @@ header {
   margin-bottom: 0.7em;
 }
 
-header > h4 {
+h4 {
   margin: 0;
   margin-top: 0.5em;
 }
@@ -146,20 +146,32 @@ ul.highlights > li::before {
   margin-right: 0.2em;
 }
 
-ul.tags {
+ul.keywords {
   list-style: none;
   display: flex;
   flex-direction: row;
   margin-top: 0.5em;
 }
 
-ul.tags > li {
+ul.keywords > li {
   font-size: 0.8em;
   padding: 0.2em 0.4em;
   margin-right: 0.5em;
   border: 1px solid #262626;
 }
 
-ul.tags > li:last-child {
+ul.keywords > li:last-child {
   margin-right: 0;
+}
+
+ul.skill-members {
+  list-style: none;
+}
+
+ul.skill-members li span.level {
+  margin-right: 0.7em;
+}
+
+.invisible {
+  visibility: hidden;
 }
