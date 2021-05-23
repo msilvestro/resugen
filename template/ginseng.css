@@ -132,6 +132,11 @@ section.timeline > section::before {
   z-index: 1;
 }
 
+section.timeline > section.current:before {
+  content: "▲";
+  margin-left: -1.26em;
+}
+
 ul.highlights {
   list-style: none;
   padding-left: 1em;
