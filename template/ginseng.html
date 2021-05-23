@@ -11,92 +11,100 @@
         <h1>{{ resume.name }}</h1>
         <h2>Resume</h2>
       </header>
+      <section>
+        <p>{{ resume.summary }}</p>
+        <p>
+          🌐 <a href="{{ resume.website }}">{{ resume.website }}</a> — 📧
+          <a href="mailto:{{ resume.email }}">{{ resume.email }}</a>
+        </p>
+      </section>
       <div class="content">
-        <section>
-          <p>{{ resume.summary }}</p>
-          <p>
-            🌐 <a href="{{ resume.website }}">{{ resume.website }}</a> — 📧
-            <a href="mailto:{{ resume.email }}">{{ resume.email }}</a>
-          </p>
-        </section>
+        <div class="column">
+          <section>
+            <h3>Experiences</h3>
+            <section class="timeline">
+              {% for experience in resume.work %}
+              <section
+                class="{% if not experience.end_date %}current{% endif %}"
+              >
+                <header>
+                  <h4>{{ experience.position }}</h4>
+                  <span class="subtitle">{{ experience.company }}</span>
+                  <span class="date"
+                    >{{ experience.start_date | format_date("{month}/{year}")
+                    }}—{{ experience.end_date | format_date("{month}/{year}")
+                    }}</span
+                  >
+                </header>
+                <section>
+                  {% if experience.summary %}
+                  <p>{{ experience.summary }}</p>
+                  {% endif %} {% if experience.highlights %}
+                  <ul class="highlights">
+                    {% for highlight in experience.highlights %}
+                    <li>{{ highlight }}</li>
+                    {% endfor %}
+                  </ul>
+                  {% endif %} {% if experience.keywords %}
+                  <ul class="keywords">
+                    {% for keyword in experience.keywords %}
+                    <li>{{ keyword }}</li>
+                    {% endfor %}
+                  </ul>
+                  {% endif %}
+                </section>
+              </section>
+              {% endfor %}
+            </section>
+          </section>
+        </div>
 
-        <section>
-          <h3>Experiences</h3>
-          <section class="timeline">
-            {% for experience in resume.work %}
-            <section class="{% if not experience.end_date %}current{% endif %}">
-              <header>
-                <h4>{{ experience.position }}</h4>
-                <span class="subtitle">{{ experience.company }}</span>
-                <span class="date"
-                  >{{ experience.start_date | format_date("{month}/{year}")
-                  }}—{{ experience.end_date | format_date("{month}/{year}")
-                  }}</span
-                >
-              </header>
-              <section>
-                {% if experience.summary %}
-                <p>{{ experience.summary }}</p>
-                {% endif %} {% if experience.highlights %}
-                <ul class="highlights">
-                  {% for highlight in experience.highlights %}
-                  <li>{{ highlight }}</li>
-                  {% endfor %}
-                </ul>
-                {% endif %} {% if experience.keywords %}
-                <ul class="keywords">
-                  {% for keyword in experience.keywords %}
-                  <li>{{ keyword }}</li>
-                  {% endfor %}
-                </ul>
+        <div class="column">
+          <section>
+            <h3>Education</h3>
+            <section class="timeline">
+              {% for education in resume.education %}
+              <section
+                class="{% if not education.end_date %}current{% endif %}"
+              >
+                <header>
+                  <h4>{{ education.major }}</h4>
+                  <span class="subtitle"
+                    >{{ education.institution }} — {{ education.final_grade
+                    }}</span
+                  >
+                  <span class="date"
+                    >{{ education.start_date | format_date("{month}/{year}")
+                    }}—{{ education.end_date | format_date("{month}/{year}")
+                    }}</span
+                  >
+                </header>
+                {% if education.summary %}
+                <section>{{ education.summary | markdown }}</section>
                 {% endif %}
               </section>
+              {% endfor %}
             </section>
+          </section>
+
+          <section>
+            <h3>Skills</h3>
+            {% for skill in resume.skills %}
+            <header><h4>{{ skill.category }}</h4></header>
+            <ul class="skill-members">
+              {% for member in skill.members %}
+              <li>
+                <span class="invisible"
+                  >{% for i in range(5-member.level) %}◻{% endfor %}</span
+                ><span class="level"
+                  >{% for i in range(member.level) %}◼{% endfor %}</span
+                ><span>{{ member.name}}</span>
+              </li>
+              {% endfor %}
+            </ul>
             {% endfor %}
           </section>
-        </section>
-
-        <section>
-          <h3>Education</h3>
-          <section class="timeline">
-            {% for education in resume.education %}
-            <section class="{% if not education.end_date %}current{% endif %}">
-              <header>
-                <h4>{{ education.major }}</h4>
-                <span class="subtitle"
-                  >{{ education.institution }} — {{ education.final_grade
-                  }}</span
-                >
-                <span class="date"
-                  >{{ education.start_date | format_date("{month}/{year}") }}—{{
-                  education.end_date | format_date("{month}/{year}") }}</span
-                >
-              </header>
-              {% if education.summary %}
-              <section>{{ education.summary | markdown }}</section>
-              {% endif %}
-            </section>
-            {% endfor %}
-          </section>
-        </section>
-
-        <section>
-          <h3>Skills</h3>
-          {% for skill in resume.skills %}
-          <header><h4>{{ skill.category }}</h4></header>
-          <ul class="skill-members">
-            {% for member in skill.members %}
-            <li>
-              <span class="invisible"
-                >{% for i in range(5-member.level) %}◻{% endfor %}</span
-              ><span class="level"
-                >{% for i in range(member.level) %}◼{% endfor %}</span
-              ><span>{{ member.name}}</span>
-            </li>
-            {% endfor %}
-          </ul>
-          {% endfor %}
-        </section>
+        </div>
       </div>
     </div>
   </body>

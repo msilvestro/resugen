@@ -1,5 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
 
+@page {
+  size: A4;
+  margin: 1cm;
+}
+
+@media print {
+  body {
+    font-size: 13px;
+  }
+}
+
 body {
   margin: 0;
   font-family: "Rubik", sans-serif;
@@ -58,9 +69,8 @@ header > h2 {
   display: none;
 }
 
-.content > section {
-  background-color: white;
-  color: #262626;
+#resume > section,
+.column > section {
   padding: 30px;
   padding-top: 15px;
 }
@@ -74,11 +84,19 @@ h3 {
   padding: 0.15em 0.3em;
 }
 
-.content section > section {
+.content {
+  display: flex;
+}
+
+.content .column {
+  flex: 1;
+}
+
+.column section > section {
   margin-bottom: 2em;
 }
 
-.content section > section:last-child {
+.column section > section:last-child {
   margin-bottom: 0;
 }
 
