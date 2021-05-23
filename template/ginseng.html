@@ -23,29 +23,29 @@
         <section>
           <h3>Experiences</h3>
           <section class="timeline">
-            {% for work_experience in resume.work %}
-            <section>
+            {% for experience in resume.work %}
+            <section class="{% if not experience.end_date %}current{% endif %}">
               <header>
-                <h4>{{ work_experience.position }}</h4>
-                <span class="subtitle">{{ work_experience.company }}</span>
+                <h4>{{ experience.position }}</h4>
+                <span class="subtitle">{{ experience.company }}</span>
                 <span class="date"
-                  >{{ work_experience.start_date | format_date("{month}/{year}")
-                  }}—{{ work_experience.end_date | format_date("{month}/{year}")
+                  >{{ experience.start_date | format_date("{month}/{year}")
+                  }}—{{ experience.end_date | format_date("{month}/{year}")
                   }}</span
                 >
               </header>
               <section>
-                {% if work_experience.summary %}
-                <p>{{ work_experience.summary }}</p>
-                {% endif %} {% if work_experience.highlights %}
+                {% if experience.summary %}
+                <p>{{ experience.summary }}</p>
+                {% endif %} {% if experience.highlights %}
                 <ul class="highlights">
-                  {% for highlight in work_experience.highlights %}
+                  {% for highlight in experience.highlights %}
                   <li>{{ highlight }}</li>
                   {% endfor %}
                 </ul>
-                {% endif %} {% if work_experience.keywords %}
+                {% endif %} {% if experience.keywords %}
                 <ul class="keywords">
-                  {% for keyword in work_experience.keywords %}
+                  {% for keyword in experience.keywords %}
                   <li>{{ keyword }}</li>
                   {% endfor %}
                 </ul>
@@ -60,7 +60,7 @@
           <h3>Education</h3>
           <section class="timeline">
             {% for education in resume.education %}
-            <section>
+            <section class="{% if not education.end_date %}current{% endif %}">
               <header>
                 <h4>{{ education.major }}</h4>
                 <span class="subtitle"
