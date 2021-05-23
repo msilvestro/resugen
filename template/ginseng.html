@@ -13,7 +13,7 @@
       </header>
       <div class="content">
         <section>
-          <p>I'm a developer with a mathematical background.</p>
+          <p>{{ resume.summary }}</p>
           <p>
             🌐 <a href="{{ resume.website }}">{{ resume.website }}</a> — 📧
             <a href="mailto:{{ resume.email }}">{{ resume.email }}</a>
@@ -21,7 +21,7 @@
         </section>
 
         <section>
-          <header><h3>Experiences</h3></header>
+          <h3>Experiences</h3>
           <section class="timeline">
             {% for work_experience in resume.work %}
             <section>
@@ -43,10 +43,10 @@
                   <li>{{ highlight }}</li>
                   {% endfor %}
                 </ul>
-                {% endif %} {% if work_experience.tags %}
-                <ul class="tags">
-                  {% for tag in work_experience.tags %}
-                  <li>{{ tag }}</li>
+                {% endif %} {% if work_experience.keywords %}
+                <ul class="keywords">
+                  {% for keyword in work_experience.keywords %}
+                  <li>{{ keyword }}</li>
                   {% endfor %}
                 </ul>
                 {% endif %}
@@ -57,7 +57,7 @@
         </section>
 
         <section>
-          <header><h3>Education</h3></header>
+          <h3>Education</h3>
           <section class="timeline">
             {% for education in resume.education %}
             <section>
@@ -78,6 +78,24 @@
             </section>
             {% endfor %}
           </section>
+        </section>
+
+        <section>
+          <h3>Skills</h3>
+          {% for skill in resume.skills %}
+          <header><h4>{{ skill.category }}</h4></header>
+          <ul class="skill-members">
+            {% for member in skill.members %}
+            <li>
+              <span class="invisible"
+                >{% for i in range(5-member.level) %}◻{% endfor %}</span
+              ><span class="level"
+                >{% for i in range(member.level) %}◼{% endfor %}</span
+              ><span>{{ member.name}}</span>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endfor %}
         </section>
       </div>
     </div>
