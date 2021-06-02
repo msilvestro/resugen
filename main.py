@@ -1,11 +1,15 @@
-from jinja2 import Environment, FileSystemLoader
-from jinja2.exceptions import TemplateSyntaxError
-import yaml
-import time
-from watchdog.observers import Observer
-from watchdog.events import PatternMatchingEventHandler
+import os
 import re
+import time
+from pathlib import Path
+
 import markdown
+import yaml
+from jinja2 import Environment, FileSystemLoader
+from watchdog.events import PatternMatchingEventHandler
+from watchdog.observers import Observer
+
+TEMPLATE_NAME = os.getenv("TEMPLATE_NAME", "minimal")
 
 template_loader = FileSystemLoader(searchpath="./template")
 template_env = Environment(loader=template_loader)
@@ -29,7 +33,6 @@ template_env.filters["markdown"] = markdown_converter
 
 
 def export():
-    TEMPLATE_NAME = "minimal"
     template = template_env.get_template(f"{TEMPLATE_NAME}.html")
 
     with open("resume.yml", "r", encoding="utf-8") as input_file:
@@ -44,18 +47,23 @@ class TemplateHandler(PatternMatchingEventHandler):
     case_sensitive = False
 
     def on_modified(self, event):
-        print(event)
         try:
             export()
+            print(f"File '{event.src_path}' has been modified, output regenerated...")
         except Exception as exc:
             print(exc)
 
 
 if __name__ == "__main__":
+    Path("output").mkdir(exist_ok=True)
+
+    print(f"Using template '{TEMPLATE_NAME}'")
     try:
         export()
     except Exception as exc:
         print(exc)
+    print("Output generated in 'output/resume.html', waiting for changes...")
+
     observer = Observer()
     observer.schedule(TemplateHandler(), path=".", recursive=True)
     observer.start()

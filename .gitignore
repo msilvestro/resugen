@@ -22,5 +22,5 @@ htmlcov/
 
 # Resume input and output
 resume*.yml
-!resume.sample.yml
+!resume.example.yml
 output/
