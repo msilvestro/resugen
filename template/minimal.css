@@ -1,0 +1,9 @@
+@page {
+  size: A4;
+  margin: 1cm;
+}
+
+#resume {
+  max-width: 960px;
+  margin: 0 auto;
+}

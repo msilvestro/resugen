@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <title>{{ resume.name }}'s resume</title>
+    <style type="text/css">
+      {% include "minimal.css" %}
+    </style>
+  </head>
+  <body>
+    <div id="resume">
+      <h1>{{ resume.name }}</h1>
+      <h2>Resume</h2>
+      <p>{{ resume.summary }}</p>
+      <p>
+        🌐 <a href="{{ resume.website }}">{{ resume.website }}</a> — 📧
+        <a href="mailto:{{ resume.email }}">{{ resume.email }}</a>
+      </p>
+      <h3>Experiences</h3>
+      {% for experience in resume.work %}
+      <h4>{{ experience.position }}</h4>
+      <p>{{ experience.company }}</p>
+      <p>
+        {{ experience.start_date | format_date("{month}/{year}") }}—{{
+        experience.end_date | format_date("{month}/{year}") }}
+      </p>
+      {% if experience.summary %}
+      <p>{{ experience.summary }}</p>
+      {% endif %} {% if experience.highlights %}
+      <ul>
+        {% for highlight in experience.highlights %}
+        <li>{{ highlight }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %} {% if experience.keywords %}
+      <ul>
+        {% for keyword in experience.keywords %}
+        <li>{{ keyword }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %} {% endfor %}
+
+      <h3>Education</h3>
+      {% for education in resume.education %}
+      <h4>{{ education.major }}</h4>
+      <p>{{ education.institution }} — {{ education.final_grade }}</p>
+      <p>
+        {{ education.start_date | format_date("{month}/{year}") }}—{{
+        education.end_date | format_date("{month}/{year}") }}
+      </p>
+      {% if education.summary %} {{ education.summary | markdown }} {% endif %}
+      {% endfor %}
+
+      <h3>Skills</h3>
+      {% for skill in resume.skills %}
+      <h4>{{ skill.category }}</h4>
+      <ul>
+        {% for member in skill.members %}
+        <li>
+          <span>{{ member.name}}</span>
+          <span>{% for i in range(member.level) %}◼{% endfor %}</span
+          ><span>{% for i in range(5 - member.level) %}◻{% endfor %}</span>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endfor %}
+    </div>
+  </body>
+</html>
