@@ -1,1 +1,39 @@
-name: Arthur Dent
+name: John Doe
+email: john@gmail.com
+website: http://johndoe.com
+summary: |
+  A summary of John Doe...
+work:
+  - company: Company
+    position: President
+    start_date: 2013-01
+    end_date: 2021-04
+    summary: |
+      Description...
+    highlights:
+      - Started the company
+      - Other wonderful things
+    keywords:
+      - Python
+      - Excel
+education:
+  - institution: University
+    major: Bachelor's degree in Software Development
+    start_date: 2011-01
+    end_date: 2013-01
+    final_grade: 100
+    summary: |
+      What I did in my three years...
+skills:
+  - category: Languages
+    members:
+      - name: English
+        level: 5
+  - category: Web Development
+    members:
+      - name: HTML
+        level: 4
+      - name: CSS
+        level: 4
+      - name: Javascript
+        level: 5
