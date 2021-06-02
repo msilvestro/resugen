@@ -29,7 +29,7 @@ template_env.filters["markdown"] = markdown_converter
 
 
 def export():
-    TEMPLATE_NAME = "ginseng"
+    TEMPLATE_NAME = "minimal"
     template = template_env.get_template(f"{TEMPLATE_NAME}.html")
 
     with open("resume.yml", "r", encoding="utf-8") as input_file:
