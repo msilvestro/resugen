@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "resume"
+name = "resugen"
 version = "0.1.0"
 description = "Generate a resume from a yaml file."
 authors = ["Matteo Silvestro <matteosilvestro@live.it>"]
@@ -12,6 +12,9 @@ PyYAML = "^5.4.1"
 watchdog = "^2.1.2"
 Markdown = "^3.3.4"
 python-dotenv = "^0.19.2"
+
+[tool.poetry.scripts]
+generate = "resugen.main:generate"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

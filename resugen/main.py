@@ -57,7 +57,7 @@ class TemplateHandler(PatternMatchingEventHandler):
             print(exc)
 
 
-if __name__ == "__main__":
+def generate():
     Path("output").mkdir(exist_ok=True)
 
     print(f"Using template '{TEMPLATE_NAME}'")
