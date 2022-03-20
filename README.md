@@ -17,7 +17,7 @@ This is a simple tool I created for myself to quickly generate a resume from a `
 - Select a template creating an `.env` file, taking inspiration from `.env.example`
 - Run the export and make the script look for changes:
   ```sh
-  python main.py
+  poetry run generate
   ```
 - From this moment on, you will find the output HTML file at `output/resume.html`
   - Whenever you update the `resume.yml` or the template files the script will regenerate the output
