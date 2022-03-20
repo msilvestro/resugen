@@ -5,9 +5,12 @@ from pathlib import Path
 
 import markdown
 import yaml
+from dotenv import load_dotenv
 from jinja2 import Environment, FileSystemLoader
 from watchdog.events import PatternMatchingEventHandler
 from watchdog.observers import Observer
+
+load_dotenv()
 
 TEMPLATE_NAME = os.getenv("TEMPLATE_NAME", "minimal")
 
