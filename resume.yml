@@ -1,0 +1,121 @@
+name: Matteo Silvestro
+email: matteosilvestro@live.it
+website: https://matteosilvestro.com
+summary: |
+  I'm a passionate but down-to-earth developer with a mathematician's mindset.
+work:
+  - company: Gorgias
+    position: Full-Stack Developer
+    start_date: 2023-05
+    summary: |
+      Working on the phone infrastructure of the helpdesk in an international team.
+    highlights:
+      - Led the reshaping and improvement of how voice calls are displayed and handled inside tickets
+    keywords:
+      - Flask
+      - Postgres
+      - Clickhouse
+      - Google Cloud
+  - company: Casavo
+    position: Backend Developer
+    start_date: 2021-05
+    end_date: 2023-05
+    summary: |
+      Worked on real estate related services in a small team as a leading figure.
+    highlights:
+      - Led the whole process of design and development of a platform to manage property sales
+      - Developed a microservice for image enhancement
+      - Worked closely with our users to understand their needs and create a better product tailored for them
+      - Run experiments and worked in an iterative and incremental way to adapt to a fast changing market
+    keywords:
+      - PHP
+      - FastAPI
+      - AWS
+      - Postgres
+  - company: Oval Money
+    position: Python Backend Developer
+    start_date: 2020-03
+    end_date: 2021-04
+    highlights:
+      - Contributed to design and implementation of a moneybox feature, refactoring and improving old code during the process
+      - Improved and updated the support chat service integration, analyzing and solving bugs
+    keywords:
+      - Pyramid
+      - SQLAlchemy + Alembic
+      - Postgres
+  - company: Consoft > Intesa Sanpaolo
+    position: System Administrator
+    start_date: 2019-03
+    end_date: 2020-02
+    summary: |
+      Developed and maintained a suite of tools to manage Qlik Sense and NPrinting clusters.
+    keywords:
+      - PowerShell
+      - Qlik
+  - company: Consoft > Intesa Sanpaolo
+    position: Application Developer
+    start_date: 2018-03
+    end_date: 2019-02
+    summary: |
+      Implemented a new feature according to user requests, with a usable and nice interface.
+    keywords:
+      - Java
+      - HTML/CSS
+      - Javascript
+education:
+  - institution: University of Turin
+    major: Master's degree in Stochastics and Data Science
+    start_date: 2015-09
+    end_date: 2018-04
+    final_grade: 110L
+    summary: |
+      Thesis on clustering of interactive stories, _Computer-Assisted Evaluation of Story-Driven Interactive Storytelling Systems_.
+
+      Modern education in probabilistic, statistical and computational methods.
+  - institution: University of Turin
+    major: Bachelor's degree in Mathematics
+    start_date: 2012-09
+    end_date: 2015-10
+    final_grade: 110L
+    summary: |
+      Thesis on AI applied to a non-deterministic turn game, _MCTS and videogames: an application for Pokémon Contest Spectacular_.
+
+      Courses of Algebra, Probability and Statistics, Analysis, Geometry.
+  - institution: I.I.S.S "Gianfrancesco Cigna" (Mondovì)
+    major: High school diploma
+    start_date: 2007-09
+    end_date: 2012-07
+    final_grade: 100
+skills:
+  - category: Languages
+    members:
+      - name: Italian
+        level: 5
+      - name: English
+        level: 4
+      - name: Japanese
+        level: 2
+      - name: Spanish
+        level: 2
+      - name: Romanian
+        level: 1
+  - category: Backend technologies
+    members:
+      - name: Python
+        level: 5
+      - name: Postgres
+        level: 3
+      - name: AWS
+        level: 2
+  - category: Frontend technologies
+    members:
+      - name: HTML/CSS
+        level: 3
+      - name: TypeScript
+        level: 3
+      - name: React
+        level: 3
+  - category: Videogames
+    members:
+      - name: Unity/C#
+        level: 4
