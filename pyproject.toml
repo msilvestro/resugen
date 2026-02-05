@@ -6,12 +6,12 @@ authors = ["Matteo Silvestro <matteosilvestro@live.it>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.9"
-Jinja2 = "^3.0.1"
-PyYAML = "^5.4.1"
-watchdog = "^2.1.2"
-Markdown = "^3.3.4"
-python-dotenv = "^0.19.2"
+python = "^3.10"
+Jinja2 = "^3.1.6"
+PyYAML = "^6.0.3"
+watchdog = "^6.0.0"
+Markdown = "^3.10.1"
+python-dotenv = "^1.2.1"
 
 [tool.poetry.scripts]
 generate = "resugen.main:generate"
