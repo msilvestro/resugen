@@ -12,6 +12,7 @@ from watchdog.observers import Observer
 
 load_dotenv()
 
+RESUME_INPUT = os.getenv("RESUME_INPUT", "resume")
 TEMPLATE_NAME = os.getenv("TEMPLATE_NAME", "minimal")
 
 template_loader = FileSystemLoader(searchpath="./template")
@@ -38,7 +39,7 @@ template_env.filters["markdown"] = markdown_converter
 def export():
     template = template_env.get_template(f"{TEMPLATE_NAME}.html")
 
-    with open("resume.yml", "r", encoding="utf-8") as input_file:
+    with open(f"{RESUME_INPUT}.yml", "r", encoding="utf-8") as input_file:
         resume = yaml.safe_load(input_file)
     with open("output/resume.html", "w", encoding="utf-8") as output_file:
         output_file.write(template.render(resume=resume))
@@ -60,7 +61,7 @@ class TemplateHandler(PatternMatchingEventHandler):
 def generate():
     Path("output").mkdir(exist_ok=True)
 
-    print(f"Using template '{TEMPLATE_NAME}'")
+    print(f"Using template '{TEMPLATE_NAME}' and reading '{RESUME_INPUT}.yml'")
     try:
         export()
     except Exception as exc:

@@ -1,0 +1,41 @@
+name: John Doe
+email: john@gmail.com
+website: http://johndoe.com
+summary: |
+  A summary of John Doe...
+videogames:
+  - name: Awesome Game
+    type: Solo project
+    engine: Unity
+    platforms:
+      - Windows
+      - WebGL
+    stores:
+      - name: Itch
+        link: https://johndoe.itch.io/awesome-game
+        release_date: 26/04/2026
+    summary: |
+      Something about the game.
+    highlights:
+      - Spawned a lot of objects
+      - Wrote some cool shaders
+experiences:
+  - name: Full-Stack Developer
+    provider: Company or university
+    start_date: 2026-04
+    highlights:
+      - Started the company
+      - Other wonderful things
+skills:
+  - category: Languages
+    members:
+      - name: English
+        level: 5
+  - category: Web Development
+    members:
+      - name: HTML
+        level: 4
+      - name: CSS
+        level: 4
+      - name: Javascript
+        level: 5
