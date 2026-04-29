@@ -70,7 +70,6 @@
                     {{ experience.start_date | format_date("{month}/{year}")}}—{{ experience.end_date | format_date("{month}/{year}")}}
                   </span>
                 </header>
-                <section>
                 {% if experience.summary %}
                 {{ experience.summary | markdown }}
                 {% endif %}
